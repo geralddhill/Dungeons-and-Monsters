@@ -7,6 +7,7 @@ class Map:
         _map: A 2D list of characters that represents each tile of the map
         _revealed: A 2D list of bools that represents each tile of the map and if it has been revealed to the player
     """
+
     _instance = None        # Variable of type Map that contains the only instance of this class
     _initialized = False    # Boolean variable that represents whether this class has been initialized already
 
@@ -67,7 +68,7 @@ class Map:
         for i, row in enumerate(self._map):
             for j, char in enumerate(row):
                 # Prints plater
-                if loc[0] == j and loc[1] == i:
+                if loc[0] == i and loc[1] == j:
                     shown_map += '*'
                     continue
 
@@ -86,10 +87,10 @@ class Map:
         """Sets the given location in the revealed map to true.
            This allows show_map() to display the given tile.
         """
-        self._revealed[loc[1]][loc[0]] = True
+        self._revealed[loc[0]][loc[1]] = True
         return
 
 
     def remove_at_loc(self, loc):
         """Sets the given location in the map to 'n' (nothing)"""
-        self._map[loc[1]][loc[0]] = 'n'
+        self._map[loc[0]][loc[1]] = 'n'
